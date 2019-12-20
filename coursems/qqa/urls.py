@@ -1,8 +1,17 @@
-from django.urls import path
+from django.urls import path, include
 
 from .views import *
 
 urlpatterns = [
-    path('', CommonView.index, name='index'),
-    path('SelectCourse/', SelectCourse.index, name='SelectCourseIndex'),
+    path('student/',include([
+        path('index',student.Index.index),
+        path('courseSelect',student.CourseSelect.index),
+        path('courseSchedule',student.CourseSelect.index),
+    ])),
+    path('teacher/',include([
+
+    ])),
+    path('admin/',include([
+
+    ])),
 ]

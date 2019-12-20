@@ -1,1 +1,1 @@
-from qqa.models.Course import *
+from .Course import *
