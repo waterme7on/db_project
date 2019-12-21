@@ -4,7 +4,7 @@ from django.db import models
 from qqa.models import Course 
 from qqa.models import Teacher
 
-class TC(models.Model):
+class TeacherCourse(models.Model):
     #课程-教师表 
     course_no = models.ForeignKey(Course, on_delete = models.CASCADE)
     teacher_no = models.ForeignKey(Teacher, on_delete = models.CASCADE)
@@ -13,7 +13,7 @@ class TC(models.Model):
     
     class Meta:
         app_label = 'qqa'
-        db_table = "TC"
+        db_table = "TeacherCourse"
 
 
         

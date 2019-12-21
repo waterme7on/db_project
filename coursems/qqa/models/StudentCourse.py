@@ -3,7 +3,7 @@ from .Student import Student
 from .Teacher import Teacher
 from .Course import Course
 
-class SC(models.Model):
+class StudentCourse(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
@@ -15,4 +15,4 @@ class SC(models.Model):
 
     class Meta:
         app_label = 'qqa'
-        db_table = 'SC'
+        db_table = 'StudentCourse'
