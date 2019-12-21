@@ -16,7 +16,7 @@ class Course(models.Model):
     
     # 数据项定义
     course_no = models.AutoField(primary_key=True)  # 主码：课程编号
-    type = models.CharField(max_length=4, choices=COURSE_TYPE)  # 课程类型
+    course_type = models.CharField(max_length=4, choices=COURSE_TYPE)  # 课程类型
     course_name = models.CharField(max_length=20)   # 课程名
 
     # 功能
