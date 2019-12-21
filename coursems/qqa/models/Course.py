@@ -1,6 +1,7 @@
 # -*- encode:utf-8 -*-
 
 from django.db import models
+import django.db.models.deletion
 
 class Course(models.Model):
     
