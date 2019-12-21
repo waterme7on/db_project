@@ -1,7 +1,7 @@
 from django.db import models
-from .Student import Student
-from .Teacher import Teacher
-from .Course import Course
+from qqa.models import Student
+#from qqa.models import Teacher
+from qqa.models import Course
 
 class SC(models.Model):
 
@@ -13,7 +13,7 @@ class SC(models.Model):
     score_no = models.IntegerField(verbose_name='成绩', null=True, blank=True)
 
     def __str__(self):
-        return self.semester_no
+        return str(self.student_no)+"got "+str(self.score_no)+"in"+str(self.course_no)
 
     class Meta:
         app_label = 'qqa'
