@@ -1,0 +1,25 @@
+{% extends "../../base.html" %}
+
+{% block content %}
+    <!-- {% for course in courses %}
+    <li><a>{{ course }}</a></li>
+    {% endfor %} -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">课程编号</th>
+                <th scope="col">课程名</th>
+                <th scope="col">学分</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <th scope="row">{{ course.course_no }}</th>
+                <td>{{ course.course_name }}</td>
+                <td>{{ course.course_score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

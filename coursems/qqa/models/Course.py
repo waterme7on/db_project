@@ -1,6 +1,7 @@
 # -*- encode:utf-8 -*-
 
 from django.db import models
+import django.db.models.deletion
 
 class Course(models.Model):
     
@@ -17,6 +18,7 @@ class Course(models.Model):
     course_no = models.AutoField(primary_key=True)  # 主码：课程编号
     course_type = models.CharField(max_length=4, choices=COURSE_TYPE)  # 课程类型
     course_name = models.CharField(max_length=20)   # 课程名
+    course_score = models.PositiveIntegerField(default=0)
 
     # 功能
     # __str__：得到课程名

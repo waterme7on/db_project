@@ -1,0 +1,12 @@
+{% extends "../../base.html" %}
+
+{% block content %}
+    <a class="list-group-item active">
+        <p class="text-center">课程类型</p>
+    </a>
+    {% for type in course_types %}
+    <a href="{% url 'courseTypeDetail' type%}" class="list-group-item">
+        <p class="text-center">{{ type }}</p>
+    </a>
+    {% endfor %}
+{% endblock %}

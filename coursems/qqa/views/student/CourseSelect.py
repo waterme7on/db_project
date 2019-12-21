@@ -4,7 +4,7 @@ from django.template import loader
 from qqa.models import Course
 
 def index(request):
-    template = loader.get_template('CourseSelect/index.html')
+    template = loader.get_template('student/CourseSelect/index.html')
     course_types = Course.COURSE_TYPE
     course_types = [c[1] for c in course_types]
     context = {
@@ -13,7 +13,7 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def type_detail(request, course_type):
-    template = loader.get_template('CourseSelect/type_detail.html')
+    template = loader.get_template('student/CourseSelect/type_detail.html')
     course_types = {c[1]:c[0] for c in Course.COURSE_TYPE}
     course_type = course_types[course_type]
     courses = Course.objects.filter(course_type=course_type)
