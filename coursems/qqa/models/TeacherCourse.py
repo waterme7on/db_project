@@ -3,6 +3,7 @@
 from django.db import models
 from qqa.models import Course 
 from qqa.models import Teacher
+
 class TC(models.Model):
     #课程-教师表 
     course_no = models.ForeignKey(Course, on_delete = models.CASCADE)
