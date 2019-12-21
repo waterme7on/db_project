@@ -35,11 +35,6 @@ class Migration(migrations.Migration):
                 'db_table': 'Teacher',
             },
         ),
-        migrations.RenameField(
-            model_name='course',
-            old_name='type',
-            new_name='course_type',
-        ),
         migrations.CreateModel(
             name='TC',
             fields=[
