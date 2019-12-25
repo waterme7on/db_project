@@ -9,6 +9,8 @@ urlpatterns = [
         path('courseSchedule',student.CourseSelect.index),
         path('courseTypeDetail/<str:course_type>', student.CourseSelect.type_detail, name='courseTypeDetail'),
         path('courseSelectSubmit', student.CourseSelect.select_course, name='courseSelection'),
+        path('semesterSelect',student.CourseScoreRequest.index, name="semester"),
+        path('score/<str:type>',student.CourseScoreRequest.score, name="score"),
     ])),
     path('teacher/',include([
 
