@@ -20,7 +20,7 @@ class Student(models.Model):
     gender = models.CharField(max_length=6)    #性别
     age = models.IntegerField()         #年龄
     # grade = models.CharField(max_length=1,choices=GRADE, default=大一)
-
+    password = models.CharField(max_length=20, blank=True)
 
     # 功能
     # 得到学生名
