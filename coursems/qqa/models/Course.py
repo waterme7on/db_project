@@ -3,6 +3,7 @@
 from django.db import models
 import django.db.models.deletion
 import django.utils.timezone as timezone
+from qqa.models.School import School
 
 class Course(models.Model):
     
@@ -23,6 +24,8 @@ class Course(models.Model):
     course_score = models.PositiveIntegerField(default=0)   # 学分
     location = models.CharField(default='', max_length=15)  # 地点
     course_time = models.DateTimeField(default=timezone.now)    # 时间
+    school = models.ForeignKey(School, on_delete=models.CASCADE) 
+    major = models.CharField(max_length=15, blank=True)
     # 已选人数不存在表里
 
     # 功能

@@ -8,7 +8,6 @@ class StudentCourse(models.Model):
     # course = models.OneToOneField(Course, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    # teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     semester = models.CharField(max_length=15, verbose_name='学期', blank=True)
     score = models.IntegerField(verbose_name='成绩', null=True, blank=True)
 
