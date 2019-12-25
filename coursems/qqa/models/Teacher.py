@@ -1,6 +1,7 @@
 # -*- encode:utf-8 -*-
 
 from django.db import models
+from qqa.models.School import School
 
 class Teacher(models.Model):
 
@@ -16,11 +17,12 @@ class Teacher(models.Model):
    ]
     
     # 数据项定义
-    teacher_no = models.AutoField(primary_key=True)  # 主码：教师编号
+    teacher_no = models.CharField(max_length=12, primary_key=True)  # 主码：教师编号
     teacher_name = models.CharField(max_length=20)   # 教师名字
     gender = models.CharField(max_length=2) # 性别
     title = models.CharField(max_length=15,choices=TITLE_TYPE, default = "Instructor") # 职称
-    
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+
     # __str__: 给出老师和职称
     def __str__(self): 
         return "name: "+ self.teacher_name +" title: "+self.title

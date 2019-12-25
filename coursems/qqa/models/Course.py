@@ -2,6 +2,7 @@
 
 from django.db import models
 import django.db.models.deletion
+import django.utils.timezone as timezone
 
 class Course(models.Model):
     
@@ -19,7 +20,10 @@ class Course(models.Model):
     course_no = models.CharField(max_length=12, primary_key=True)  # 主码：课程编号
     course_type = models.CharField(max_length=4, choices=COURSE_TYPE)  # 课程类型
     course_name = models.CharField(max_length=20)   # 课程名
-    course_score = models.PositiveIntegerField(default=0)
+    course_score = models.PositiveIntegerField(default=0)   # 学分
+    location = models.CharField(default='', max_length=15)  # 地点
+    course_time = models.DateTimeField(default=timezone.now)    # 时间
+    # 已选人数不存在表里
 
     # 功能
     # __str__：得到课程名

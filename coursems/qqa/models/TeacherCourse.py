@@ -6,8 +6,9 @@ from qqa.models import Teacher
 
 class TeacherCourse(models.Model):
     #课程-教师表 
-    course_no = models.ForeignKey(Course, on_delete = models.CASCADE)
-    teacher_no = models.ForeignKey(Teacher, on_delete = models.CASCADE)
+    course = models.ForeignKey(Course, on_delete = models.CASCADE)
+    teacher = models.ForeignKey(Teacher, on_delete = models.CASCADE)
+    
     def __str__(self):
         return str(self.course_no)+"is taught by "+str(self.teacher_no)
     
