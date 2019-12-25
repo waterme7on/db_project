@@ -16,4 +16,5 @@ urlpatterns = [
     path('admin/',include([
 
     ])),
+    path('test/',common.test.index),
 ]
