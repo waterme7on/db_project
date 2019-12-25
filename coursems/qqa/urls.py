@@ -11,6 +11,8 @@ urlpatterns = [
         path('courseSelectSubmit', student.CourseSelect.select_course, name='courseSelection'),
         path('semesterSelect',student.CourseScoreRequest.index, name="semester"),
         path('score/<str:type>',student.CourseScoreRequest.score, name="score"),
+        path('courseSearch/',student.CourseSearch.index, name="CourseSearch"),
+        path('courseSearch/courseSearchResult',student.CourseSearch.get_search_result,name="get_result"),
     ])),
     path('teacher/',include([
 
