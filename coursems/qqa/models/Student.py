@@ -4,7 +4,8 @@ from django.db import models
 class Student(models.Model):
 
     #数据项定义
-    student_no = models.AutoField(primary_key=True)  # 主码：学生编号
+    # student_no = models.AutoField(primary_key=True)  # 主码：学生编号
+    student_no = models.CharField(max_length=12, primary_key=True)  # 主码：学生编号
     student_name = models.CharField(max_length=12)   #属性：学生姓名
     student_sex = models.CharField(max_length=6)    #性别
     student_age = models.IntegerField()         #年龄

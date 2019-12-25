@@ -4,22 +4,53 @@
     <!-- {% for course in courses %}
     <li><a>{{ course }}</a></li>
     {% endfor %} -->
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">课程编号</th>
-                <th scope="col">课程名</th>
-                <th scope="col">学分</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for course in courses %}
-            <tr>
-                <th scope="row">{{ course.course_no }}</th>
-                <td>{{ course.course_name }}</td>
-                <td>{{ course.course_score }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <form action="{% url 'courseSelection' %}" method="post">    
+        {% csrf_token %}
+        <table class="table" id="course_table">
+            <thead>
+                <tr>
+                    <th scope="col">课程编号</th>
+                    <th scope="col">课程名</th>
+                    <th scope="col">学分</th>
+                    <th scope="col">选课</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <th scope="row">{{ course.course_no }}</th>
+                    <td>{{ course.course_name }}</td>
+                    <td>{{ course.course_score }}</td>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="course" value="{{ course.course_no }}" id="choice{{ forloop.counter }}"></input>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary" id="submit_button">提交选课结果</button>
+    </form>
+    
+
+    <script>
+        $(document).ready(function () {
+            $("#submit_button").click(function () {
+                // var selected_courses = Array();
+                $("#course_table").find('input:checkbox').each(function () { //遍历所有复选框
+                    if ($(this).prop('checked') == true) {
+                        // selected_courses.push($(this).parents("td").siblings("th").text())    // 选择其中选中课程的编号
+
+                    }
+                });
+                // console.log(selected_courses)
+            });
+        });
+    </script>
+<!-- <form action="/your-name/" method="post">
+    <label for="your_name">Your name: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <input type="submit" value="OK">
+</form> -->
 {% endblock %}
