@@ -14,14 +14,13 @@ class StudentCourse(models.Model):
     def __str__(self):
         return str(self.student) + " selected " + str(self.course)
 
-    def add_tuple(student_no, course_no):
-        student = Student.objects.get(student_no = student_no)
-        course = Course.objects.get(course_no = course_no)
+    def add_tuple(student, course, semester):
         try:
-            sc = StudentCourse(student=student, course=course)
+            sc = StudentCourse(student=student, course=course, semester=semester)
             sc.save()
-        except:
-            print('xxx')
+        except Exception as e:
+            print('Select Course Error:', e)
+            raise(e)
 
 
     class Meta:
