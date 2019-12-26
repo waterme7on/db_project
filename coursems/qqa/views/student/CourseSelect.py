@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from qqa.models import Course
 from qqa.models import Student
 from qqa.models import StudentCourse
+from django.utils import timezone
 
 def index(request):
     course_types = Course.COURSE_TYPE
@@ -38,13 +39,15 @@ def select_course(request):
         # student_no = request.session['student_no']
         student_no = '123456' # for testing
         student = Student.objects.get(student_no = student_no)
+
+        semester = str(timezone.now().year)+"/"+str(timezone.now().month)
         
         for course_no in selected_courses:
             # getlist 得到字符串数组
             # course_no = int(course_no)
             course = Course.objects.get(course_no = course_no)
             try:
-                StudentCourse.add_tuple(student=student, course=course)
+                StudentCourse.add_tuple(student=student, course=course, semester=semester)
                 context['success'].append(course)
             except:
                 context['fail'].append(course)
