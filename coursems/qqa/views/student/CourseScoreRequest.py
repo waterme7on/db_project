@@ -43,3 +43,10 @@ def score(request, type):
         "avg_score":avg_score
     }
     return render(request,'student/CourseScoreRequest/score.html',context)
+
+def scoreSelect(request):
+    if(request.method == "POST" ):
+        return HttpResponse("HELLO!")
+    else:
+
+        return("Nothing")
