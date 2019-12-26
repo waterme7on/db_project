@@ -7,3 +7,4 @@ class CourseSearchForm(forms.Form):
     teacher_name = forms.CharField(label="teacher_name", max_length=20)
     course_semester =   forms.CharField(label = "course_semester", max_length=15) 
     course_school = forms.CharField(label = "course_school", max_length=20)
+

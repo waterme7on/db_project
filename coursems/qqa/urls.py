@@ -11,6 +11,7 @@ urlpatterns = [
         path('courseSelectSubmit', student.CourseSelect.select_course, name='courseSelection'),
         path('semesterSelect',student.CourseScoreRequest.index, name="semester"),
         path('score/<str:type>',student.CourseScoreRequest.score, name="score"),
+        path('scoreSelect',student.CourseScoreRequest.scoreSelect, name="scoreSelect"),
         path('courseSearch/',student.CourseSearch.index, name="CourseSearch"),
         path('courseSearchResult',student.CourseSearch.get_search_result,name="get_result"),
     ])),
@@ -20,5 +21,9 @@ urlpatterns = [
     path('admin/',include([
 
     ])),
-    path('test/',common.test.index),
+    path('index/',common.test.index), #未登录时共用的index
+    path('test/',common.test.index), #测试模板的页面
+    path('login/',common.UserManage.index), #登录页面
+    path('logout/',common.UserManage.logout), #登出, 非页面
+
 ]

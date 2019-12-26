@@ -1,0 +1,79 @@
+{% extends "../../base.html" %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							课程号
+						</th>
+						<th>
+							课程名称
+						</th>
+						<th>
+							教师姓名
+						</th>
+						<th>
+							学期
+						</th>
+						<th>
+							学分
+						</th>
+						<th>
+							选读人数
+						</th>
+						<th>
+							课程大纲
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+                    {% for course in courses %}
+                    <tr>
+                        <td>{{course.course_no}}</td>
+                        <td>{{course.course_name}}</td>
+                        <td>{{course.teacher_name}}</td>
+                        <td>{{course.course_semester}}</td>
+                        <td>{{course.course_credit}}</td>
+                        <td>{{course.student_number}}</td>
+                        <td><a href="#">点击查看详细</a></td>
+                    </tr>
+                    {% endfor %}
+				</tbody>
+			</table>
+			<div class="pagination rows">
+				<ul>
+					<li>
+						<a href="#">上一页</a>
+					</li>
+					<li>
+						<a href="#">1</a>
+					</li>
+					<li>
+						<a href="#">2</a>
+					</li>
+					<li>
+						<a href="#">3</a>
+					</li>
+					<li>
+						<a href="#">4</a>
+					</li>
+					<li>
+						<a href="#">5</a>
+					</li>
+					<li>
+						<a href="#">下一页</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+

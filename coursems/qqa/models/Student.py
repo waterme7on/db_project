@@ -21,7 +21,6 @@ class Student(models.Model):
     gender = models.CharField(max_length=6)    #性别
     age = models.IntegerField()         #年龄
     # grade = models.CharField(max_length=1,choices=GRADE, default=大一)
-    password = models.CharField(max_length=100, blank=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     major = models.CharField(max_length = 15, verbose_name="专业")
     enrollmentDate = models.DateField(verbose_name="入学时间")
