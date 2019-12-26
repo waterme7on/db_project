@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password, check_password
 
 # Create your models here.
 class User(models.Model):
@@ -21,7 +22,12 @@ class User(models.Model):
     # 得到账号
     def __str__(self):
         return self.account
-        
+
+    # 重写save, 在保存密码时加密存储
+    def save(self, *args, **kwargs):
+        self.password = make_password(self.password)
+        super().save(*args, **kwargs)
+
     # 元数据
     class Meta:
         app_label = 'qqa'
