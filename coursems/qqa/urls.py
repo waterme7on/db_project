@@ -17,4 +17,5 @@ urlpatterns = [
 
     ])),
     path('test/',common.test.index),
+    path('login/',common.UserManage.index),
 ]
