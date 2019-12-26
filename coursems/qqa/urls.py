@@ -21,6 +21,9 @@ urlpatterns = [
     path('admin/',include([
 
     ])),
-    path('test/',common.test.index),
-    path('login/',common.UserManage.index),
+    path('index/',common.test.index), #未登录时共用的index
+    path('test/',common.test.index), #测试模板的页面
+    path('login/',common.UserManage.index), #登录页面
+    path('logout/',common.UserManage.logout), #登出, 非页面
+
 ]

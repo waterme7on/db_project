@@ -2,8 +2,13 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from django.views.decorators.http import require_http_methods
-from qqa.models.User import User
 from django import forms
+
+from qqa.models.User import User
+from qqa.models.Student import Student
+from qqa.models.Teacher import Teacher
+from qqa.models.SchoolAdmin import SchoolAdmin
+
 
 class LoginForm(forms.Form):
     account = forms.CharField(max_length=30)
@@ -24,15 +29,19 @@ def index(request):
                 return render(request,'common/login.html',{'form': form, 'message' : message})
                 pass
             if check_password(form.cleaned_data['password'],user.password):
+                request.session['account'] = user.account
                 request.session['no'] = user.x_no
                 request.session['character'] = user.character
                 request.session.set_expiry(0) #当浏览器关闭后，用户会话 cookie 将过期。
                 #返回登录成功, 重定向到相应角色的首页
                 if user.character == 'student':
-                    return redirect('/qqa/student/index')
+                    request.session['name'] = Student.objects.get(pk=user.x_no).student_name
+                    return redirect('.')
                 elif user.character == 'teacher':
+                    request.session['name'] = Teacher.objects.get(pk=user.x_no).teacher_name
                     return redirect('/qqa/teacher/index')
                 else:
+                    request.session['name'] = SchoolAdmin.objects.get(pk=user.x_no).admin_name
                     return redirect('/qqa/admin/index')
                 #return 
                 pass 
@@ -50,9 +59,8 @@ def register(request):
     pass
 
 def logout(request):
-    try:
-        request.session.flush()
-    except:
-        pass
-    pass
-        
+    if not request.session.get('account', None):
+        # 如果本来就未登录，也就没有登出一说
+        return redirect('/qqa/index')
+    request.session.flush()
+    return redirect('/qqa/index')
