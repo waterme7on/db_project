@@ -1,0 +1,84 @@
+{% extends "../../base.html" %}
+
+{% block content %}
+
+<form action="courseSearchResult" method="post">
+    {% csrf_token %} 
+
+    <label for="course_no">课程编号: </label>
+    <input id="id_course_no" type="text" name="course_no" value="">
+
+    <label for="course_name">课程名称: </label>
+    <input id="id_course_name" type="text" name="course_name" value="">
+
+    <br>
+    <label for="teacher_no">教师工号: </label>
+    <input id="id_teacher_no" type="text" name="teacher_no" value="">
+
+    <label for="teacher_name">教师姓名: </label>
+    <input id="id_teacher_name" type="text" name="teacher_name" value="">
+        
+    <br>
+    <label for="course_semester">授课学期</label>
+    <select id="id_course_semester" type="text" name="course_semester" >
+        <option>-请选择-</option><option>2019年秋季</option><option>2019年夏季</option>
+    </select>    
+
+    <label for="course_school">授课学院</label>
+    <select id="id_course_school" type="text" name="course_school" >
+        <option>-请选择-</option><option>信息学院</option><option>数学学院</option>
+    </select>    
+
+    <br>
+    
+    <input type="submit" value="搜索课程">
+
+</form>
+
+{% endblock %}
+
+<!-- 
+        <form>
+                     <label>教师工号
+                     </label>
+                     <input type="text" />
+
+                    <label>教师姓名
+                    </label>
+                    <input type="text" />
+
+                    <br>
+
+                    <label>课程编号
+                    </label>
+                    <input type="text" />
+
+                   <label>课程名称
+                   </label>
+                   <input type="text" />
+
+                   <br>
+
+                   <label>授课学院
+                   </label>
+
+                    <select>
+                        <option>-请选择-</option><option>2019年秋季</option><option>2019年夏季</option>
+                    </select>
+
+                    <label>授课学期
+                    </label>
+                    <select>
+                        <option>-请选择-</option><option>2019年秋季</option><option>2019年夏季</option>
+                    </select>
+
+
+                    <br>
+
+                    <a href = "./CourseQueryResult.html">
+                        <br /> <button class="btn" type="submit" >查询课程</button>
+                    </a>
+
+        </form> -->
+        
+
