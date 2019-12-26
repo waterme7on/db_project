@@ -25,6 +25,8 @@
     </div>
     {% endif %}
     
-    <a role="button" class="btn btn-primary" href="{% url 'courseSelectIndex' %}">返回选课页面</a>
+    <a role="button" class="btn btn-primary" href="{% url 'courseSelectIndex' %}">返回选课主页面</a>
+    <a role="button" class="btn btn-primary" href={{prev}}>返回上级页面</a>
+    <a role="button" class="btn btn-primary" href="">查看选课结果</a>
 
 {% endblock %}
