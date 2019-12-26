@@ -1,0 +1,30 @@
+{% extends "../../base.html" %}
+
+    {% block content %}
+    {% if success %}
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">选课成功列表</h4>
+            {% for course in success %}
+            <p align="middle">{{ course }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if fail %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">选课失败列表</h4>
+            {% for course in fail %}
+            <p align="middle">{{ course }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if not fail and not success %}
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">请至少选择一门课程</h4>
+    </div>
+    {% endif %}
+    
+    <a role="button" class="btn btn-primary" href="{% url 'courseSelectIndex' %}">返回选课页面</a>
+
+{% endblock %}
