@@ -22,7 +22,6 @@ class Teacher(models.Model):
     gender = models.CharField(max_length=2) # 性别
     title = models.CharField(max_length=15,choices=TITLE_TYPE, default = "Instructor") # 职称
     school = models.ForeignKey(School, on_delete=models.CASCADE)
-    password = models.CharField(max_length=100, blank=True)
     
     # __str__: 给出老师和职称
     def __str__(self): 
