@@ -7,7 +7,7 @@ from django.http import Http404
 
 from qqa.models import Course
 from qqa.models import Student
-from qqa.models import StudentCourse
+from qqa.models import StudentCourlas
 
 def index(request):
     course_types = Course.COURSE_TYPE

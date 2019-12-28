@@ -3,13 +3,13 @@ from django.template import loader
 from django.shortcuts import render, get_object_or_404
 
 from qqa.models import Course
-from qqa.models import StudentCourse
+from qqa.models import StudentCourlas
 
 def index(request):
     
     semesters=[]
     semesters_tmp=[]
-    records = StudentCourse.objects.all()
+    records = StudentCourlas.objects.all()
     for re in records:   
         semester = re.semester
         semesters_tmp.append(semester)

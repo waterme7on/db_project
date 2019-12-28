@@ -3,8 +3,8 @@ from .models.Course import Course
 from .models.Student import Student
 from .models.Teacher import Teacher
 from .models.School import School
-from .models.TeacherCourse import TeacherCourse
-from .models.StudentCourse import StudentCourse
+from .models.TeacherCourlas import TeacherCourlas
+from .models.StudentCourlas import StudentCourlas
 from .models.SchoolAdmin import SchoolAdmin
 from .models.User import User
 
@@ -14,6 +14,6 @@ admin.site.register(Teacher)
 admin.site.register(Course)
 admin.site.register(School)
 admin.site.register(User)
-admin.site.register(TeacherCourse)
-admin.site.register(StudentCourse)
+admin.site.register(TeacherCourlas)
+admin.site.register(StudentCourlas)
 admin.site.register(SchoolAdmin)
