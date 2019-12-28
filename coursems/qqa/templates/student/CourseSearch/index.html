@@ -5,80 +5,77 @@
 <form action="/qqa/student/courseSearchResult" method="post">
     {% csrf_token %} 
 
-    <label for="course_no">课程编号: </label>
-    <input id="id_course_no" type="text" name="course_no" value="">
+    <div class="row">
+        <div class="input-group col-md-5">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">课程编号</span>
+            </div>
+            <input id="id_course_no"  name="course_no" value="" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
 
-    <label for="course_name">课程名称: </label>
-    <input id="id_course_name" type="text" name="course_name" value="">
+        <div class="input-group col-md-5">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">课程名称</span>
+            </div>
+            <input id="id_course_name"  name="course_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
 
-    <br>
-    <label for="teacher_no">教师工号: </label>
-    <input id="id_teacher_no" type="text" name="teacher_no" value="">
+    </div>
+<br>
+    <div class="row">
+        <div class="input-group col-md-5">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">教师编号</span>
+            </div>
+            <input id="id_teacher_no"  name="teacher_no" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
 
-    <label for="teacher_name">教师姓名: </label>
-    <input id="id_teacher_name" type="text" name="teacher_name" value="">
-        
-    <br>
-    <label for="course_semester">授课学期</label>
-    <select id="id_course_semester" type="text" name="course_semester" >
-        <option>-请选择-</option><option>2019年秋季</option><option>2019年夏季</option>
-    </select>    
+        <div class="input-group col-md-5">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">教师姓名</span>
+            </div>
+            <input id="id_teacher_name"  name="teacher_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
 
-    <label for="course_school">授课学院</label>
-    <select id="id_course_school" type="text" name="course_school" >
-        <option>-请选择-</option><option>信息学院</option><option>数学学院</option>
-    </select>    
+    </div>
+
+<br>
+
+    <div class="row">
+        <div class="input-group col-md-5 ">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">授课学院</label>
+            </div>
+
+            <select id="id_course_school"  name="course_school" class=" custom-select " id="inputGroupSelect01" >
+            <option selected>请选择</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            </select>
+        </div>
+
+        <div class="input-group col-md-5">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">授课学期</label>
+            </div>
+            <select id="id_course_semester"  name="course_semester" class="custom-select" id="inputGroupSelect01">
+            <option selected>请选择</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            </select>
+        </div>
+
+    </div>
 
     <br>
     
-    <input type="submit" value="搜索课程">
+    <button type="submit" class="btn btn-primary" id="submit_button">查询课程</button>
+
+
 
 </form>
 
 {% endblock %}
-
-<!-- 
-        <form>
-                     <label>教师工号
-                     </label>
-                     <input type="text" />
-
-                    <label>教师姓名
-                    </label>
-                    <input type="text" />
-
-                    <br>
-
-                    <label>课程编号
-                    </label>
-                    <input type="text" />
-
-                   <label>课程名称
-                   </label>
-                   <input type="text" />
-
-                   <br>
-
-                   <label>授课学院
-                   </label>
-
-                    <select>
-                        <option>-请选择-</option><option>2019年秋季</option><option>2019年夏季</option>
-                    </select>
-
-                    <label>授课学期
-                    </label>
-                    <select>
-                        <option>-请选择-</option><option>2019年秋季</option><option>2019年夏季</option>
-                    </select>
-
-
-                    <br>
-
-                    <a href = "./CourseQueryResult.html">
-                        <br /> <button class="btn" type="submit" >查询课程</button>
-                    </a>
-
-        </form> -->
-        
 
