@@ -7,14 +7,16 @@ class User(models.Model):
     学生 = "student"
     教师 = "teacher"
     教秘 = "admin"
+    管理员 = "superadmin"
     character = [
         (学生, "学生"),
         (教师, "教师"),
         (教秘, "教秘"),
+        (管理员, "管理员"),
     ]
     #数据项定义
     account = models.CharField(max_length=30, primary_key=True)
-    character = models.CharField(max_length=7, choices=character)
+    character = models.CharField(max_length=12, choices=character)
     x_no = models.CharField(max_length=12) # 对应的student_no 或 teacher_no 或 admin_no
     password = models.CharField(max_length=100, blank=True) #密文存储的密码
 

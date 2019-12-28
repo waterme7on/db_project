@@ -1,39 +1,18 @@
-# -*- encode:utf-8 -*-
-
 from django.db import models
-import django.db.models.deletion
-import django.utils.timezone as timezone
-from qqa.models.School import School
 
 class Course(models.Model):
-    
-    # 变量定义
-    # 课程类别
-    专业必修 = "ZYBX"
-    专业选修 = "ZYXX"
-    COURSE_TYPE = [
-        (专业必修, "专业必修"),
-        (专业选修, "专业选修")
-    ]
-    
+    # course_no    course_name    credit    syllabus(URL)    is_partly_visible :0是全部公开
     # 数据项定义
-    # course_no = models.AutoField(primary_key=True)  # 主码：课程编号
     course_no = models.CharField(max_length=12, primary_key=True)  # 主码：课程编号
-    course_type = models.CharField(max_length=4, choices=COURSE_TYPE)  # 课程类型
     course_name = models.CharField(max_length=20)   # 课程名
-    course_score = models.PositiveIntegerField(default=0)   # 学分
-    location = models.CharField(default='', max_length=15)  # 地点
-    course_time = models.DateTimeField(default=timezone.now)    # 时间
-    school = models.ForeignKey(School, on_delete=models.CASCADE) 
-    major = models.CharField(max_length=15, blank=True)
-    # 已选人数不存在表里
+    credit = models.PositiveIntegerField()   # 学分
+    syllabus = models.CharField(max_length=15)  # 大纲（URL）
+    is_partly_visible = models.PositiveIntegerField()   #
 
     # 功能
     # __str__：得到课程名
     def __str__(self): 
         return self.course_name    
-
-    # course_no = models.CharField(max_length=12, unique=True, primary_key=True)    # 主码
 
     # 元数据
     class Meta:

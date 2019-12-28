@@ -1,2 +1,2 @@
-from .student import *
+# from .student import *
 from .common import *
