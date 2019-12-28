@@ -4,7 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('student/',include([
-        path('index',student.Index.index),
+        path('index', student.Index.index),
         path('courseSelect',student.CourseSelect.index, name='courseSelectIndex'),  # 选课主页面
         path('courseSchedule',student.CourseSchedule.index),
         path('courseTypeDetail/<str:course_type>', student.CourseSelect.type_detail, name='courseTypeDetail'),
