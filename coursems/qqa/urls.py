@@ -19,6 +19,7 @@ urlpatterns = [
 
     ])),
     path('admin/',include([
+        path('courseChoose', admin.CourseChoose.index),
 
     ])),
     path('index/',common.test.index), #未登录时共用的index
