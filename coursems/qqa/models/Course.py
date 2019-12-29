@@ -12,7 +12,7 @@ class Course(models.Model):
     # 功能
     # __str__：得到课程名
     def __str__(self): 
-        return self.course_name    
+        return self.course_no
 
     # 元数据
     class Meta:

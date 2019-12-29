@@ -1,2 +1,16 @@
 {% extends "../../base.html" %}
-<p>hello!</p>
+
+
+{% block content %}
+
+<a class="list-group-item active">
+    <p class="text-center">请选择需要修改的课程</p>
+</a>
+{% for course in course_list %}
+<a href= "{% url 'courseDetail' course%}" class="list-group-item">
+    <p class="text-center">{{ course }}</p>
+    
+</a>
+{% endfor %}
+
+{% endblock %}

@@ -29,14 +29,35 @@ def index(request):
         program_no_objs= MajorProgram.objects.filter(major_no = major.major_no)#还要加一个判断semester的条件 但是好像不能直接"and"
         for program_objs in program_no_objs :
             program_no = program_objs.program_no
-            program = Program.objects.filter(program_no = program_no)
-            course_no = program.course_no#注意 这里的course_no并不是真正的course_no，而是一个course实体
-            course_list.append(course_no) #找到了所有这个学期，这个学校，所有本学院专业的course
+            program = Program.objects.filter(program_no = program_no).first()
+
+            course = program.course_no#注意 这里的course_no并不是真正的course_no，而是一个course实体
+            course_name = course.course_name
+            course_list.append(course_name) #找到了所有这个学期，这个学校，所有本学院专业的course
 
     context={"course_list":course_list}
     
 
 
-
-
     return render(request, 'admin/CourseChoose/index.html', context)    
+
+
+def courlasChoose(request, course_no):
+    #找course-courlas表
+    print(course_no)
+
+    courlas_objs = Courlas.objects.filter(course_no = course_no)
+
+
+    courlas_list = []
+    for courlas in courlas_objs :
+        text = courlas.time_location 
+        courlas_no = courlas.courlas_no 
+        courlas_list.append({"text":text, "course_no":courlas_objs} )
+    
+    context = {"courlas_list": courlas_list }
+
+    return render(request,"admin/CourseChoose/courlas_select.html",context)
+    
+
+

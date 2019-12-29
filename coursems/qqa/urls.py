@@ -20,6 +20,9 @@ urlpatterns = [
     ])),
     path('admin/',include([
         path('courseChoose', admin.CourseChoose.index),
+        path('courseDetail/<str:course_no>', admin.CourseChoose.courlasChoose, name='courseDetail'),
+        # path('courlasDetail/<str:courlas_no>', admin.CourseChoose.courlasChoose, name='courlasDetail'),
+
 
     ])),
     path('index/',common.test.index), #未登录时共用的index

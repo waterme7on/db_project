@@ -8,9 +8,10 @@ from django.http import Http404
 from qqa.models import Course
 from qqa.models import Student
 from qqa.models import StudentCourlas
+from qqa.models import Program
 
 def index(request):
-    course_types = Course.COURSE_TYPE
+    course_types = Program.COURSE_TYPE
     course_types = [c[1] for c in course_types]
     context = {
         'course_types': course_types,
@@ -18,7 +19,7 @@ def index(request):
     return render(request, 'student/CourseSelect/index.html', context)
 
 def type_detail(request, course_type):
-    course_types = {c[1]:c[0] for c in Course.COURSE_TYPE}
+    course_types = {c[1]:c[0] for c in Program.COURSE_TYPE}
     course_type = course_types[course_type]
     courses = Course.objects.filter(course_type=course_type)
     paginator = Paginator(courses, 25)
