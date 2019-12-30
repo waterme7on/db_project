@@ -8,7 +8,11 @@
 </a>
 {% for course in course_list %}
 <a href= "{% url 'courseDetail' course%}" class="list-group-item">
-    <p class="text-center">{{ course }}</p>
+    <p class="text-center">点击查看{{ course }}的教学班</p>
+    
+</a>
+<a href= "{% url 'courseModify' course%}" class="list-group-item">
+    <p class="text-center">点击修改{{ course }}的信息</p>
     
 </a>
 {% endfor %}

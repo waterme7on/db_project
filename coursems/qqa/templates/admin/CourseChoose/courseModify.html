@@ -1,0 +1,47 @@
+{% extends "../../base.html" %}
+
+
+{% block content %}
+
+<a class="list-group-item active">
+    <p class="text-center">当前课程编号为：<strong>{{course_obj.course_no}}</strong>请选择需要修改的课程信息</p>
+</a>
+<form action="{% url 'courseModifying' course_obj.course_no %}" method="post">
+{% csrf_token %}
+<fieldset>
+					<ol>
+						<li>
+							<div>
+								<samp>课程名</samp><input type="text" name="course_name"/>
+							</div>
+						</li>
+						<li>
+							<div>
+								<kbd>
+									学分
+								</kbd><input type="text" name="course_credits"/>
+							</div>
+						</li>
+						<li>
+							<div>
+								<kbd>
+									教学大纲
+								</kbd> <a href="http://www.baidu.com">http://www.baidu.com</a>
+							</div>
+						</li>
+						<li>
+							<div>
+								<kbd>
+									可见性
+								</kbd><input type="text" name="visible"/>
+							</div>
+						</li>
+					</ol><br /> <button class="btn" type="submit">提交</button>
+				</fieldset>
+
+
+</form>
+
+
+{% endblock %}
+

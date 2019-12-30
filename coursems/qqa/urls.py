@@ -22,6 +22,10 @@ urlpatterns = [
         path('courseChoose', admin.CourseChoose.index),
         path('courseDetail/<str:course_no>', admin.CourseChoose.courlasChoose, name='courseDetail'),
         # path('courlasDetail/<str:courlas_no>', admin.CourseChoose.courlasChoose, name='courlasDetail'),
+        path('courseModify/<str:course_no>', admin.CourseChoose.courseModify, name='courseModify'),
+        path('courseModify/<str:course_no>/modify', admin.CourseChoose.courseModifying, name='courseModifying'),
+        path('courseModify/<str:course_no>/result', admin.CourseChoose.courseModifyResult, name='courseModifyResult'),
+        
 
 
     ])),

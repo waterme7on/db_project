@@ -60,4 +60,35 @@ def courlasChoose(request, course_no):
     return render(request,"admin/CourseChoose/courlas_select.html",context)
     
 
+def courseModify(request, course_no):
+    #找course-courlas表
+    print(course_no)
 
+    course_obj = Course.objects.filter(course_no = course_no)
+    
+    context = {"course_obj": course_obj }#直接传入要更改的course即可
+
+    return render(request,"admin/CourseChoose/courseModify.html",context)
+
+
+def courseModifying(request, course_no):
+    course = get_object_or_404(Course, pk=course_no)
+
+    modified_name = request.POST['course_name']
+    modified_credits = request.POST['course_credits']
+    modified_visible = request.POST['visible']
+    course.course_name = modified_name
+    course.credit = modified_credits
+    course.is_partly_visible = modified_visible
+    course.save()
+        
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+    return HttpResponseRedirect(reverse('courseModifyResult', args=(course_no,)))
+
+
+def courseModifyResult(request, course_no):
+    course_obj = Course.objects.filter(course_no = course_no)
+    context = {"course_obj":course_obj}
+    return render(request,"admin/CourseChoose/courseModifyResult.html",context)
