@@ -1,9 +1,10 @@
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.http import Http404
+from django.urls import reverse
 
 
 
