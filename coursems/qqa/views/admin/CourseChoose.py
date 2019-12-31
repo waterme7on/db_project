@@ -83,7 +83,6 @@ def courseModifying(request, course_no):
     course.credit = modified_credits
     course.is_partly_visible = modified_visible
     course.save()
-        
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
@@ -94,3 +93,58 @@ def courseModifyResult(request, course_no):
     course_obj = Course.objects.filter(course_no = course_no)
     context = {"course_obj":course_obj}
     return render(request,"admin/CourseChoose/courseModifyResult.html",context)
+
+
+
+
+def courseAdd(request):
+
+
+    return render(request,"admin/CourseChoose/course_add.html")
+
+
+def courseAddSubmit(request):
+    print( request.POST)
+    course_name = request.POST["course_name"]
+    course_credit = request.POST["course_credit"]
+    class_no_str = request.POST["class_no"]
+    is_partly_visible = request.POST["is_partly_visible"][0]
+
+    class_no_list = class_no_str.split(",")
+    for i in range(0, len(class_no_list) ):
+        class_no = class_no_list[i].replace(" ","")
+        class_no_list[i] = class_no
+
+    print("********************",course_name,course_credit,class_no_list,is_partly_visible)
+
+
+    #填写数据库需要的信息，将从数据库得到的信息进行处理
+    #course_no  自动生成
+    #course_name
+    #credit 学分
+    #syllabus #课程大纲的链接  #大纲让老师填写
+    #is_partly_visible 
+    # 如果是全校可看，那么就不填
+    #如果是部分可看，那么要填授课对象，把元组插入到，partlyVisible中
+
+
+    #得到表单输入以后，进行输入检查
+    #course_name是否跟数据库里面的重名？ - 重名就弹出警告框
+    #学分
+    #syllabus可以用往年的大纲
+
+    #partlyvisible
+    #可以用往年的数据
+    
+    context = {
+        "course_name":course_name,
+        "course_credit":course_credit
+    }
+
+    return render(request,"admin/CourseChoose/course_add_submit.html",context)
+
+
+
+
+
+

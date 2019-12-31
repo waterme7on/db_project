@@ -1,0 +1,57 @@
+{% extends "../../base.html" %}
+
+{% block content %}
+
+<form action="courseAddSubmit" method="post">
+    {% csrf_token %} 
+
+
+
+        <div class="input-group ">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">课程名称</span>
+            </div>
+            <input id="id_course_name"  name="course_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+<br>
+        <div class="input-group ">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">课程学分数目</span>
+            </div>
+            <input id="id_course_credit"  name="course_credit"  type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+<br>
+
+        <div class="input-group ">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">是否全校可见？</label>
+            </div>
+
+            <select id="id_is_partly_visible"  name="is_partly_visible" class=" custom-select " id="inputGroupSelect01" >
+            <option selected>请选择</option>
+            <option value="1">否</option>
+            <option value="2">是</option>
+            </select>
+        </div>
+
+<br>
+        
+        <div class="input-group ">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">授课对象班级编号</span>
+            </div>
+            <input id="id_class_no"  name="class_no"  placeholder="若有多个班级请用英文逗号分隔开，否则输入无效" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+<br>
+    
+    <button type="submit" class="btn btn-primary" id="submit_button">添加此课程</button>
+
+
+</form>
+
+{% endblock %}
+

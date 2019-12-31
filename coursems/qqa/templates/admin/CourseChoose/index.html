@@ -2,9 +2,11 @@
 
 
 {% block content %}
-
+<a href="{% url 'courseADD' %}" class="list-group-item">
+    <p class="text-center">点击添加课程</p>
+</a>
 <a class="list-group-item active">
-    <p class="text-center">请选择需要修改的课程</p>
+    <p class="text-center">教学班查看</p>
 </a>
 {% for course in course_list %}
 <a href= "{% url 'courseDetail' course.course_name%}" class="list-group-item">
