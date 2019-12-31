@@ -6,7 +6,7 @@ class StudentCourlas(models.Model):
     student_no = models.ForeignKey(Student, on_delete=models.CASCADE)
     courlas_no = models.ForeignKey(Courlas, on_delete=models.CASCADE)
     # status = models.IntegerField()
-    semester = models.CharField(max_length=10)
+    term = models.CharField(max_length=10)
     # intention = models.IntegerField()
 
     def __str__(self):
@@ -15,4 +15,4 @@ class StudentCourlas(models.Model):
     class Meta:
         app_label = 'qqa'
         db_table = 'StudentCourlas'
-        unique_together = ['student_no', 'courlas_no', 'semester']
+        unique_together = ['student_no', 'courlas_no', 'term']
