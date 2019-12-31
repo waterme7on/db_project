@@ -7,12 +7,12 @@
     <p class="text-center">请选择需要修改的课程</p>
 </a>
 {% for course in course_list %}
-<a href= "{% url 'courseDetail' course%}" class="list-group-item">
-    <p class="text-center">点击查看{{ course }}的教学班</p>
+<a href= "{% url 'courseDetail' course.course_name%}" class="list-group-item">
+    <p class="text-center">点击查看{{ course.course_name }}的教学班</p>
     
 </a>
-<a href= "{% url 'courseModify' course%}" class="list-group-item">
-    <p class="text-center">点击修改{{ course }}的信息</p>
+<a href= "{% url 'courseModify' course.course_no%}" class="list-group-item">
+    <p class="text-center">点击修改{{ course.course_name }}的信息</p>
     
 </a>
 {% endfor %}

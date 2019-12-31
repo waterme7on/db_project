@@ -34,7 +34,7 @@ def index(request):
 
             course = program.course_no#注意 这里的course_no并不是真正的course_no，而是一个course实体
             course_name = course.course_name
-            course_list.append(course_name) #找到了所有这个学期，这个学校，所有本学院专业的course
+            course_list.append(course) #找到了所有这个学期，这个学校，所有本学院专业的course
 
     context={"course_list":course_list}
     
@@ -65,7 +65,8 @@ def courseModify(request, course_no):
     #找course-courlas表
     print(course_no)
 
-    course_obj = Course.objects.filter(course_no = course_no)
+    course_obj = Course.objects.filter(course_no = course_no).first()
+    print(course_no)
     
     context = {"course_obj": course_obj }#直接传入要更改的course即可
 
