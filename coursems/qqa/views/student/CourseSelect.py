@@ -22,7 +22,10 @@ def index(request):
     return render(request, 'student/CourseSelect/index.html', context)
 
 def type_detail(request, course_type):
+<<<<<<< HEAD
     # 首先得到学生所处学院的培养方案
+=======
+>>>>>>> ba5ac8f00c2cd2036a4909d2e6f64d12eaac7514
     course_types = {c[1]:c[0] for c in Program.COURSE_TYPE}
     course_type = course_types[course_type]
     # 根据课程类型，从学生所属学院的培养方案中筛选出培养方案的条目

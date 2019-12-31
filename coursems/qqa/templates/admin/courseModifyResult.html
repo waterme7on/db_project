@@ -1,0 +1,16 @@
+{% extends "../../base.html" %}
+
+
+{% block content %}
+
+<a class="list-group-item active">
+    <p class="text-center">{{course_obj.course_name}}修改成功</p>
+</a>
+
+<a href= "{% url 'courseChoose' %}". class="list-group-item">
+    <p class="text-center">点击返回</p>
+    
+</a>
+
+
+{% endblock %}
