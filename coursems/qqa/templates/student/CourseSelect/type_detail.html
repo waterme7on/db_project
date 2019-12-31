@@ -27,7 +27,7 @@
                     <td>{{ courlas.syllabus }}</td>
                     <td>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="courlas" value="{{ courlas.course_no }}" id="choice{{ forloop.counter }}"></input>
+                            <input class="form-check-input" type="checkbox" name="courlas" value="{{ courlas.courlas_no }}" id="choice{{ forloop.counter }}"></input>
                         </div>
                     </td>
                 </tr>
@@ -52,6 +52,25 @@
             </ul>
         </nav>
         <button type="submit" class="btn btn-primary" id="submit_button">提交选课结果</button>
+
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            提交选课结果
+        </button>
+        
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        请至少选择一门课
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
     </form>
 
     

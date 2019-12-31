@@ -22,15 +22,12 @@ def index(request):
     return render(request, 'student/CourseSelect/index.html', context)
 
 def type_detail(request, course_type):
-# <<<<<<< HEAD
     # 首先得到学生所处学院的培养方案
-# =======
-# >>>>>>> ba5ac8f00c2cd2036a4909d2e6f64d12eaac7514
     course_types = {c[1]:c[0] for c in Program.COURSE_TYPE}
     course_type = course_types[course_type]
     # 根据课程类型，从学生所属学院的培养方案中筛选出培养方案的条目
     program_set = Program.objects.filter(course_type=course_type)
-    courses = Program.objects.filter(course_type=course_type)
+    # courses = Program.objects.filter(course_type=course_type)
     # 根据培养方案条目中的课程找到教学班
     # courlases = []
     courlases = Courlas.objects.none()
@@ -40,9 +37,8 @@ def type_detail(request, course_type):
         tmp_courlas_queryset = Courlas.objects.filter(course_no=tuple.course_no)
         # courlases.append(tmp_courlas_queryset)
         courlases = courlases | tmp_courlas_queryset
-    print(courlases)
-
-    
+    # print(courlases)
+ 
     paginator = Paginator(courlases, 25)
     # print(paginator.num_pages)
     page = request.GET.get('page')
@@ -68,28 +64,34 @@ def select_course(request):
         Http404('Expect POST Method')
 
     # print(request.POST) # <QueryDict: {'csrfmiddlewaretoken': ['fsSPEwr8oi01TtjHBItUECNbRw9V5oL58JVrPb4avFBzU6kLELGcJZOGVbTf9OV7'], 'course': ['3']}>
-    selected_courses = request.POST.getlist('course')   # django的Queryset利用这个获取列表
+    selected_courlases = request.POST.getlist('courlas')   # django的Queryset利用这个获取列表
+    print(selected_courlases)
     # 首先在选课审核队列中加入表项
     # 紧接着由系统在后台进行选课处理
 
     # 以下为在数据库中添加元组
-    # student_no = request.session['student_no']
+    # student_no = request.session['no']
     student_no = '123456' # for testing
     student = Student.objects.get(student_no = student_no)
 
-    semester = str(timezone.now().year)+"/"+str(timezone.now().month)
+    term = str(timezone.now().year)
+    if (int(timezone.now().month)) <= 8 :
+        term += '春'
+    else:
+        term += '秋'
     
-    for course_no in selected_courses:
+    for courlas_no in selected_courlases:
         # getlist 得到字符串数组
         # course_no = int(course_no)
-        course = Course.objects.get(course_no = course_no)
+        courlas = Courlas.objects.get(courlas_no = courlas_no)
+        # print(courlas_no, student, term)
         try:
-            StudentCourse.add_tuple(student=student, course=course, semester=semester)
-            context['success'].append(course)
-        except:
-            context['fail'].append(course)
-        # sc = StudentCourse(student_no = student_no, course_no = course)
-        # sc.save()
+            sc = StudentCourlas(student_no=student, courlas_no=courlas, term=term)
+            sc.save()
+            context['success'].append(courlas_no)
+        except Exception as e:
+            context['fail'].append(courlas_no)
+            print(e)
     return select_result(request, context)
 
 def select_result(request, context):

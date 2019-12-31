@@ -12,6 +12,12 @@ class StudentCourlas(models.Model):
     def __str__(self):
         return str(self.student_no) + " select " + str(self.courlas_no)
 
+    # def save(self, *args, **kwargs):
+    #     try:
+    #         super().save(*args, **kwargs)
+    #     except Exception as e:
+    #         raise(e)
+    
     class Meta:
         app_label = 'qqa'
         db_table = 'StudentCourlas'
