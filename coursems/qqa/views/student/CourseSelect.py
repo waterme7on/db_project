@@ -6,32 +6,51 @@ from django.utils import timezone
 from django.http import Http404
 
 from qqa.models import Course
+from qqa.models import Courlas
 from qqa.models import Student
 from qqa.models import StudentCourlas
+from qqa.models import Program
 
 def index(request):
-    course_types = Course.COURSE_TYPE
+    course_types = Program.COURSE_TYPE
     course_types = [c[1] for c in course_types]
     context = {
         'course_types': course_types,
     }
+    # print(request.session['no'])
+    # print(request.session['character'])
     return render(request, 'student/CourseSelect/index.html', context)
 
 def type_detail(request, course_type):
-    course_types = {c[1]:c[0] for c in Course.COURSE_TYPE}
+    # 首先得到学生所处学院的培养方案
+    course_types = {c[1]:c[0] for c in Program.COURSE_TYPE}
     course_type = course_types[course_type]
-    courses = Course.objects.filter(course_type=course_type)
-    paginator = Paginator(courses, 25)
+    # 根据课程类型，从学生所属学院的培养方案中筛选出培养方案的条目
+    program_set = Program.objects.filter(course_type=course_type)
+    courses = Program.objects.filter(course_type=course_type)
+    # 根据培养方案条目中的课程找到教学班
+    # courlases = []
+    courlases = Courlas.objects.none()
+    for tuple in program_set:
+        tuple = tuple.course_no
+        # print(tuple.course_no)
+        tmp_courlas_queryset = Courlas.objects.filter(course_no=tuple.course_no)
+        # courlases.append(tmp_courlas_queryset)
+        courlases = courlases | tmp_courlas_queryset
+    print(courlases)
+
+    
+    paginator = Paginator(courlases, 25)
     # print(paginator.num_pages)
     page = request.GET.get('page')
     try:
-        courses = paginator.page(page)
+        courlases = paginator.page(page)
     except PageNotAnInteger:
-        courses = paginator.page(1)
+        courlases = paginator.page(1)
     except EmptyPage:
-        courses = paginator.page(paginator.num_pages)
+        courlases = paginator.page(paginator.num_pages)
     context = {
-        'courses': courses,
+        'courlases': courlases,
     }
     return render(request, 'student/CourseSelect/type_detail.html', context)    
 

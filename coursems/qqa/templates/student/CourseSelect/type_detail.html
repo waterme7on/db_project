@@ -1,29 +1,33 @@
 {% extends "../../base.html" %}
 
 {% block content %}
-    <!-- {% for course in courses %}
-    <li><a>{{ course }}</a></li>
+    <!-- {% for courlas in courlases %}
+    <li><a>{{ courlas }}</a></li>
     {% endfor %} -->
     <form action="{% url 'courseSelection' %}" method="post">    
         {% csrf_token %}
         <table class="table" id="course_table">
             <thead>
                 <tr>
-                    <th scope="col">课程编号</th>
                     <th scope="col">课程名</th>
+                    <th scope="col">课程编号</th>
                     <th scope="col">学分</th>
+                    <th scope="col">时间地点</th>
+                    <th scope="col">课程大纲</th>
                     <th scope="col">选课</th>
                 </tr>
             </thead>
             <tbody>
-                {% for course in courses %}
+                {% for courlas in courlases %}
                 <tr>
-                    <th scope="row">{{ course.course_no }}</th>
-                    <td>{{ course.course_name }}</td>
-                    <td>{{ course.course_score }}</td>
+                    <th scope="row">{{courlas.course_no}}</th>
+                    <td>{{ courlas.courlas_no }}</td>
+                    <td>{{ courlas.course_no.credit }}</td>
+                    <td>{{ courlas.time_location }}</td>
+                    <td>{{ courlas.syllabus }}</td>
                     <td>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="course" value="{{ course.course_no }}" id="choice{{ forloop.counter }}"></input>
+                            <input class="form-check-input" type="checkbox" name="courlas" value="{{ courlas.course_no }}" id="choice{{ forloop.counter }}"></input>
                         </div>
                     </td>
                 </tr>
@@ -33,16 +37,16 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                    {% if courses.has_previous %}
-                    <a class="page-link" href="?page={{ courses.previous_page_number }}">上一页</a>
+                    {% if courlases.has_previous %}
+                    <a class="page-link" href="?page={{ courlases.previous_page_number }}">上一页</a>
                     {% endif %}
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="">Page {{ courses.number }} of {{courses.paginator.num_pages}}</a>
+                    <a class="page-link" href="">Page {{ courlases.number }} of {{courlases.paginator.num_pages}}</a>
                 </li>
                 <li class="page-item">
-                    {% if courses.has_next %}
-                    <a class="page-link" href="?page={{ courses.next_page_number }}">上一页</a>
+                    {% if courlases.has_next %}
+                    <a class="page-link" href="?page={{ courlases.next_page_number }}">上一页</a>
                     {% endif %}
                 </li>
             </ul>
