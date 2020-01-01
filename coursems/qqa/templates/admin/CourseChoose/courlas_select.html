@@ -1,13 +1,20 @@
 {% extends "../../base.html" %}
 
 
-{% block content %}
 
-<a class="list-group-item active">
-    <p class="text-center">请选择需要修改的教学班</p>
+{% block content %}
+<div >
+<a href="{% url 'courlasADD' course_no%}" class=" list-group-item active  ">
+    <p class="text-center">点击添加{{course_name}}的教学班</p>
 </a>
+</div>
+<br>
+<a class="list-group-item active">
+    <p class="text-center">请选择需要修改的教学班 </p>
+</a>
+
 {% for courlas in courlas_list %}
-<a href= "{% url 'courlasDetail' courlas.courlas_no%}". class="list-group-item">
+<a href= "{% url 'courlasDetail' course_no%}". class="list-group-item">
     <p class="text-center">{{ courlas.text }}</p>
     
 </a>

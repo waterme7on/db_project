@@ -46,7 +46,8 @@ def index(request):
 def courlasChoose(request, course_no):
     #找course-courlas表
     print(course_no)
-
+    course = Course.objects.filter(course_no = course_no).first()
+    course_name = course.course_name
     courlas_objs = Courlas.objects.filter(course_no = course_no)
 
 
@@ -56,9 +57,13 @@ def courlasChoose(request, course_no):
         courlas_no = courlas.courlas_no 
         courlas_list.append({"text":text, "course_no":courlas_objs} )
     
-    context = {"courlas_list": courlas_list }
+    context = {"courlas_list": courlas_list ,"course_no":course_no,"course_name":course_name}
 
     return render(request,"admin/CourseChoose/courlas_select.html",context)
+
+
+def courlasDetail(request, courlas_no):
+    return HttpResponse("hello")
     
 
 def courseModify(request, course_no):
@@ -145,6 +150,9 @@ def courseAddSubmit(request):
 
 
 
-
-
+def courlas_add(request,course_no):
+    context={
+        "course":course_no
+    }
+    return render(request,"admin/CourseChoose/courlas_add.html",context)
 

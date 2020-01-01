@@ -16,7 +16,7 @@
     <p class="text-center">教学班查看</p>
 </a>
 {% for course in course_list %}
-<a href= "{% url 'courseDetail' course.course_name%}" class="list-group-item">
+<a href= "{% url 'courseDetail' course.course_no%}" class="list-group-item">
     <p class="text-center">点击查看{{ course.course_name }}的教学班</p>
     
 </a>
