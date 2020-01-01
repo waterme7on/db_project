@@ -151,8 +151,44 @@ def courseAddSubmit(request):
 
 
 def courlas_add(request,course_no):
+    time_example = timezone.now()
     context={
-        "course":course_no
+        "course_no":course_no,
+        "time_example":time_example
     }
     return render(request,"admin/CourseChoose/courlas_add.html",context)
 
+def courlasAddSubmit(request,course_no):
+    courlas_no = request.POST["courlas_no"]
+    term = request.POST["term"]
+    time_location = request.POST["time_loc"]
+    course = Course.objects.filter(course_no=course_no).first()
+    syllabus = course.syllabus
+    course_name = course.course_name
+
+    #----------要有一个处理输入的时间地点的功能--------
+
+    #-----------------------------------------------
+    courlas = Courlas(courlas_no = courlas_no, course_no = course, term = term, syllabus = syllabus, time_location = time_location)
+    courlas.save()
+    context={
+        "term":term,
+        "course_name":course_name,
+        "courlas_no":courlas_no,
+        "syllabus":syllabus,
+        "time_location":time_location
+    }
+    # courlas_no = models.CharField(max_length=12, primary_key=True)  # 编号
+    # course_no = models.ForeignKey(Course, on_delete=models.CASCADE)#由传入的参数直接得到
+    # term = models.DateField(verbose_name="学期")
+    # syllabus = models.CharField(max_length=15)  # 大纲（URL）#继承course的
+    # time_location = models.CharField(max_length=120)
+    '''
+        time_location: {
+        "num" : xx，
+        "info": [  
+            {"time":[ 0,  1 ]   ,  "location": "教一"  }  ,  {“time”：[ 15，16 ] ,   "location": "教三"   },   ]， 
+        }  
+    '''
+
+    return render(request,"admin/CourseChoose/courlas_add_submit.html",context)

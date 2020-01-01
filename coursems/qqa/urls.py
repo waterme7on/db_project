@@ -28,6 +28,7 @@ urlpatterns = [
         path('courseAdd',admin.CourseChoose.courseAdd, name='courseADD'),
         path('courseAddSubmit',admin.CourseChoose.courseAddSubmit,name="courseAddSubmit"),
         path('<str:course_no>/courlasAdd',admin.CourseChoose.courlas_add, name='courlasADD'),
+        path('<str:course_no>/courseAddSubmit',admin.CourseChoose.courlasAddSubmit,name="courlasAddSubmit"),
         
 
 
