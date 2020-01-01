@@ -106,3 +106,22 @@ def select_course(request):
 def select_result(request, context):
     # print(context)
     return render(request, 'student/CourseSelect/select_result.html', context)
+
+def course_history(request, course_no):
+    course = Course.objects.get(course_no = course_no)
+    courlases = Courlas.objects.filter(course_no=course)
+    paginator = Paginator(courlases, 25)
+    # print(paginator.num_pages)
+    page = request.GET.get('page')
+    try:
+        courlases = paginator.page(page)
+    except PageNotAnInteger:
+        courlases = paginator.page(1)
+    except EmptyPage:
+        courlases = paginator.page(paginator.num_pages)
+    context = {
+        'courlases': courlases,
+    }
+    return render(request, 'student/CourseSelect/history.html', context)    
+
+    # return index(request)

@@ -21,7 +21,9 @@
             <tbody>
                 {% for courlas in courlases %}
                 <tr>
-                    <th scope="row">{{courlas.course_no}}</th>
+                    <th scope="row">
+                        <a href="{% url 'courseHistory' courlas.course_no%}"> {{courlas.course_no}} </a>
+                    </th>
                     <td>{{ courlas.courlas_no }}</td>
                     <td>{{ courlas.course_no.credit }}</td>
                     <td>{{ courlas.time_location }}</td>
