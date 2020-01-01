@@ -9,8 +9,8 @@ def index(request):
     # student_no = request.session['']  ## 由此获取学生id
     student_no = '123456' # test
     student = get_object_or_404(Student, pk=student_no)
-    sc = StudentCourlas.objects.filter(student=student)
-        
+    sc = StudentCourlas.objects.filter(student_no=student)
+    print(sc)
     context = {
         'SC':sc
     }

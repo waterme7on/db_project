@@ -15,20 +15,33 @@
                     <th scope="col">时间地点</th>
                     <th scope="col">课程大纲</th>
                     <th scope="col">选课</th>
+                    <th scope="col">志愿</th>
                 </tr>
             </thead>
             <tbody>
                 {% for courlas in courlases %}
                 <tr>
-                    <th scope="row">{{courlas.course_no}}</th>
+                    <th scope="row">
+                        <a href="{% url 'courseHistory' courlas.course_no%}"> {{courlas.course_no}} </a>
+                    </th>
                     <td>{{ courlas.courlas_no }}</td>
                     <td>{{ courlas.course_no.credit }}</td>
                     <td>{{ courlas.time_location }}</td>
                     <td>{{ courlas.syllabus }}</td>
                     <td>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="courlas" value="{{ courlas.courlas_no }}" id="choice{{ forloop.counter }}"></input>
+                        <input class="form-check-input" type="checkbox" name="courlas" value="{{ forloop.counter0 }},{{ courlas.courlas_no }}" id="choice{{ forloop.counter }}"></input>
                         </div>
+                    </td>
+                    <td>
+                        <select class="custom-select mr-sm-2" name="intention">
+                            <option selected value='0'>选择志愿</option>
+                            <option value='1'>第一志愿</option>
+                            <option value='2'>第二志愿</option>
+                            <option value='3'>第三志愿</option>
+                            <option value='4'>第四志愿</option>
+                            <option value='5'>第五志愿</option>
+                        </select>
                     </td>
                 </tr>
                 {% endfor %}

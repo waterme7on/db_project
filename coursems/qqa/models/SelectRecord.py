@@ -13,9 +13,10 @@ class SelectRecord(models.Model):
 
     # 功能
     def __str__(self): 
-        return self.student_no + "-" + self.courlas_no
+        return str(self.student_no) + " select " + str(self.courlas_no) + " at " + str(self.student_grade)
 
     # 元数据
     class Meta:
         app_label = 'qqa'
         db_table = 'SelectRecord'
+        unique_together = ['student_no', 'courlas_no', 'student_grade']
