@@ -10,33 +10,50 @@
 {% csrf_token %}
 <fieldset>
 					<ol>
-						<li>
-							<div>
-								<samp>课程名</samp><input type="text" name="course_name"/>
-							</div>
-						</li>
-						<li>
-							<div>
-								<kbd>
-									学分
-								</kbd><input type="text" name="course_credits"/>
-							</div>
-						</li>
-						<li>
-							<div>
-								<kbd>
-									教学大纲
-								</kbd> <a href="http://www.baidu.com">http://www.baidu.com</a>
-							</div>
-						</li>
-						<li>
-							<div>
-								<kbd>
-									可见性
-								</kbd><input type="text" name="visible"/>
-							</div>
-						</li>
-					</ol><br /> <button class="btn" type="submit">提交</button>
+					<div class="input-group ">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">课程名称</span>
+            </div>
+            <input id="id_course_name"  name="course_name" type="text" class="form-control" placeholder={{course_obj.course_name}} aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+<br>
+        <div class="input-group ">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">课程学分</span>
+            </div>
+            <input id="id_course_credit"  name="course_credit"  type="text" class="form-control" placehoder={{course_obj.credit}} aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+<br>
+
+        <div class="input-group ">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">是否全校可见？</label>
+            </div>
+
+            <select id="id_is_partly_visible"  name="is_partly_visible" class=" custom-select " placehoder={{course_obj.is_partly_visible}} id="inputGroupSelect01" >
+            <option selected>请选择</option>
+            <option value="1">否</option>
+            <option value="2">是</option>
+            </select>
+        </div>
+
+<br>
+        
+        <div class="input-group ">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">点击修改教学大纲</span>
+            </div>
+            <a href="http://www.baidu.com">http://www.baidu.com</a>
+        </div>
+
+
+<br>
+    
+    <button type="submit" class="btn btn-primary" id="submit_button">添加此课程</button>
+
+						
 				</fieldset>
 
 

@@ -27,17 +27,19 @@ data-filter-control="true"
 data-show-columns="true">
 <thead>
   <tr>
-    <th>课程</th>
+    <th>课程编号</th>
+    <th>课程名</th>
     <th data-filter-control="select">学期</th>
-    <th>成绩</th>
+    <th>学分</th>
   </tr>
 </thead>
 <tbody>
   {% for sc in SC %}
   <tr id="tr-id-"+{{forloop.counter}} class="tr-class-"+{{forloop.counter}} data-object='{"key": "value"}'>
-    <td>{{sc.course}}</td>
-    <td>{{sc.semester}}</td>
-    <td>{{sc.score}}</td>
+    <td>{{sc.courlas_no}}</td>
+    <td>{{sc.courlas_no.course_no.course_name}}</td>
+    <td>{{sc.term}}</td>
+    <td>{{sc.courlas_no.course_no.credit}}</td>
   </tr>
   {% endfor %}
 </tbody>

@@ -6,7 +6,8 @@ urlpatterns = [
     path('student/',include([
         path('index', student.Index.index),
         path('courseSelect',student.CourseSelect.index, name='courseSelectIndex'),  # 选课主页面
-        path('courseSchedule',student.CourseSchedule.index),
+        path('courseHistory/<str:course_no>', student.CourseSelect.course_history, name='courseHistory'),
+        path('courseSchedule',student.CourseSchedule.index, name='courseSchedule'),
         path('courseTypeDetail/<str:course_type>', student.CourseSelect.type_detail, name='courseTypeDetail'),
         path('courseSelectSubmit', student.CourseSelect.select_course, name='courseSelection'),
         path('semesterSelect',student.CourseScoreRequest.index, name="semester"),
