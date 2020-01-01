@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.http import Http404
 from django.urls import reverse
 
-
+import json
 
 from qqa.models import Course
 from qqa.models import Courlas
@@ -161,28 +161,50 @@ def courlas_add(request,course_no):
 def courlasAddSubmit(request,course_no):
     courlas_no = request.POST["courlas_no"]
     term = request.POST["term"]
-    time_location = request.POST["time_loc"]
+    time_location_tmp = request.POST["time_loc"]
     course = Course.objects.filter(course_no=course_no).first()
     syllabus = course.syllabus
     course_name = course.course_name
+    times=[]
+    time=[]
+    loc=[]
 
     #----------要有一个处理输入的时间地点的功能--------
+    time_loc_parts = time_location_tmp.split(";")
+    time_loc=[]
+    times_locs=[]
+    for part in time_loc_parts:
+        tmp = part.split(",")
+        time.append(tmp[0])
+        time.append(tmp[1])
+        loc.append(tmp[2])
+        times.append(time)
+        time_loc.append(tmp[0])
+        time_loc.append(tmp[1])
+        time_loc.append(tmp[2])
+        times_locs.append(time_loc)
 
+    num = len(times_locs)
+    info = []
+    
+    for i in range(len(loc)):
+        info_part = {}
+        info_part["time"] = times[i]
+        info_part["location"] = loc[i]
+        info.append(info_part)
+    time_location = {"num":num,"info":info}
+    final_time_location = str(time_location)
     #-----------------------------------------------
-    courlas = Courlas(courlas_no = courlas_no, course_no = course, term = term, syllabus = syllabus, time_location = time_location)
+    courlas = Courlas(courlas_no = courlas_no, course_no = course, term = term, syllabus = syllabus, time_location = final_time_location)
     courlas.save()
     context={
         "term":term,
         "course_name":course_name,
         "courlas_no":courlas_no,
         "syllabus":syllabus,
-        "time_location":time_location
+        "final_time_location":final_time_location
     }
-    # courlas_no = models.CharField(max_length=12, primary_key=True)  # 编号
-    # course_no = models.ForeignKey(Course, on_delete=models.CASCADE)#由传入的参数直接得到
-    # term = models.DateField(verbose_name="学期")
-    # syllabus = models.CharField(max_length=15)  # 大纲（URL）#继承course的
-    # time_location = models.CharField(max_length=120)
+    
     '''
         time_location: {
         "num" : xx，
