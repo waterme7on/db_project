@@ -4,12 +4,14 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.http import Http404
+from django.utils.timezone import now
 
 from qqa.models import Course
 from qqa.models import Courlas
 from qqa.models import Student
 from qqa.models import StudentCourlas
 from qqa.models import Program
+from qqa.models import SelectRecord
 
 def index(request):
     course_types = Program.COURSE_TYPE
@@ -65,7 +67,9 @@ def select_course(request):
 
     # print(request.POST) # <QueryDict: {'csrfmiddlewaretoken': ['fsSPEwr8oi01TtjHBItUECNbRw9V5oL58JVrPb4avFBzU6kLELGcJZOGVbTf9OV7'], 'course': ['3']}>
     selected_courlases = request.POST.getlist('courlas')   # django的Queryset利用这个获取列表
-    print(selected_courlases)
+    select_intentions = request.POST.getlist('intention')
+    # print(selected_courlases)
+    # print(select_intentions)
     # 首先在选课审核队列中加入表项
     # 紧接着由系统在后台进行选课处理
 
@@ -83,15 +87,20 @@ def select_course(request):
     for courlas_no in selected_courlases:
         # getlist 得到字符串数组
         # course_no = int(course_no)
-        courlas = Courlas.objects.get(courlas_no = courlas_no)
+        courlas = int(courlas_no.split(',')[1])
+        courlas = Courlas.objects.get(courlas_no = courlas)
+        intention = int(courlas_no.split(',')[0])
+        intention = int(select_intentions[intention])
         # print(courlas_no, student, term)
         try:
-            sc = StudentCourlas(student_no=student, courlas_no=courlas, term=term)
-            sc.save()
-            context['success'].append(courlas_no)
+            sr = SelectRecord(student_no=student, courlas_no=courlas, intention=intention, submit_time=now(), phase='1', student_grade=student.grade)
+            sr.save()
+            # sc = StudentCourlas(student_no=student, courlas_no=courlas, term=term)
+            # sc.save()
+            context['success'].append(courlas)
         except Exception as e:
-            context['fail'].append(courlas_no)
-            print(e)
+            context['fail'].append(courlas)
+            print('[Error:CourseSelect] ', e)
     return select_result(request, context)
 
 def select_result(request, context):
