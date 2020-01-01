@@ -16,7 +16,8 @@ urlpatterns = [
         path('courseSearchResult',student.CourseSearch.get_search_result,name="get_result"),
     ])),
     path('teacher/',include([
-
+        path('index',teacher.Courlas.index),
+        
     ])),
     path('admin/',include([
         path('courseChoose', admin.CourseChoose.index),
