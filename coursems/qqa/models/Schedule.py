@@ -1,6 +1,6 @@
 from django.db import models
 
-class Phase(models.Model):
+class Schedule(models.Model):
     
     # 数据项定义
     term = models.CharField(max_length=10)  # 年份春秋
