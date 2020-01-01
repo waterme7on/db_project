@@ -1,8 +1,7 @@
 from django.db import models
 from qqa.models import Course
-from qqa.models import Major
 
-class MajorProgramCourse(models.Model):
+class Program(models.Model):
     # 课程类别
     学科基础 = "XKJC"
     专业必修 = "ZYBX"
@@ -20,7 +19,6 @@ class MajorProgramCourse(models.Model):
     course_type = models.CharField(max_length=6, choices=COURSE_TYPE)   # 课程类型
     course_no = models.ForeignKey(Course, on_delete=models.CASCADE)
     semester = models.CharField(max_length=10)
-    major_no = models.ForeignKey(Major, on_delete=models.CASCADE)
 
     # 功能
     def __str__(self): 

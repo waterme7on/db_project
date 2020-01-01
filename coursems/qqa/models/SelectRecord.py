@@ -7,11 +7,9 @@ class SelectRecord(models.Model):
     student_no = models.ForeignKey(Student, on_delete=models.CASCADE)
     student_grade = models.CharField(max_length=12)
     courlas_no = models.ForeignKey(Courlas, on_delete=models.CASCADE)
-    status = models.IntegerField(default=0)
-
-    # submit_time = models.DateTimeField()
-    # phase = models.CharField(max_length=12)
-    # intention = models.IntegerField()
+    submit_time = models.DateTimeField()
+    phase = models.CharField(max_length=12)
+    intention = models.IntegerField()
 
     # 功能
     def __str__(self): 

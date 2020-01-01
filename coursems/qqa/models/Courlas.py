@@ -8,8 +8,6 @@ class Courlas(models.Model):
     term = models.DateField(verbose_name="学期")
     syllabus = models.CharField(max_length=15)  # 大纲（URL）
     time_location = models.CharField(max_length=120)
-    selected_num = models.IntegerField(default=0)
-    max_select_num = models.IntegerField(default=40)
     '''
         time_location: {
         "num" : xx，
