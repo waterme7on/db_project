@@ -42,7 +42,7 @@ def index(request):
                     return redirect('/qqa/teacher/index')
                 else:
                     request.session['name'] = SchoolAdmin.objects.get(pk=user.x_no).admin_name
-                    return redirect('/qqa/admin/index')
+                    return redirect('/qqa/admin/courseChoose')
                 #return 
                 pass 
             else:
