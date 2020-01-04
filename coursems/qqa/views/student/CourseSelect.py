@@ -5,12 +5,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.http import Http404
 from django.utils.timezone import now
-
 from qqa.models import Course
 from qqa.models import Courlas
 from qqa.models import Student
 from qqa.models import StudentCourlas
-from qqa.models import Program
 from qqa.models import SelectRecord
 
 def index(request):

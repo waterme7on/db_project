@@ -10,7 +10,6 @@ from .models.ClassMajor import *
 from .models.SchoolAdmin import * 
 from .models.StudentClass import * 
 from .models.TeacherCourlas import * 
-from .models.MajorProgram import * 
 from .models.SelectRecord import * 
 from .models.PartlyVisible import * 
 from .models.StudentCourlas import * 
@@ -32,7 +31,6 @@ admin.site.register(SelectRecord)
 admin.site.register(User)
 admin.site.register(Major)
 admin.site.register(Student)
-admin.site.register(MajorProgram)
 admin.site.register(StudentClass)
 admin.site.register(PartlyVisible)
 admin.site.register(StudentCourlas)
