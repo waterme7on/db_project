@@ -11,8 +11,8 @@ import json
 from qqa.models import Course
 from qqa.models import Courlas
 from qqa.models import Major
-from qqa.models import MajorProgram
-from qqa.models import Program
+from qqa.models import MajorProgramCourse
+#from qqa.models import Program
 from qqa.models import School
 
 def index(request):
@@ -27,12 +27,12 @@ def index(request):
     
     for major in majors :
 
-        program_no_objs= MajorProgram.objects.filter(major_no = major.major_no)#还要加一个判断semester的条件 但是好像不能直接"and"
+        program_no_objs= MajorProgramCourse.objects.filter(major_no = major)#还要加一个判断semester的条件 但是好像不能直接"and"
         for program_objs in program_no_objs :
-            program_no = program_objs.program_no
-            program = Program.objects.filter(program_no = program_no).first()
+            # program_no = program_objs.program_no
+            # program = Program.objects.filter(program_no = program_no).first()
 
-            course = program.course_no#注意 这里的course_no并不是真正的course_no，而是一个course实体
+            course = program_objs.course_no#注意 这里的course_no并不是真正的course_no，而是一个course实体
             course_name = course.course_name
             course_list.append(course) #找到了所有这个学期，这个学校，所有本学院专业的course
 
