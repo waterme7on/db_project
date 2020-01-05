@@ -6,13 +6,14 @@ from .Courlas import *
 # from .Program import * 
 from .Student import * 
 from .Teacher import * 
-
-from .ClassMajor import * 
+from .MajorProgramCourse import *
+# from .ClassMajor import * 
 from .SchoolAdmin import * 
 from .StudentClass import * 
 from .TeacherCourlas import * 
 # from .MajorProgram import * 
 from .SelectRecord import * 
+from .CurrentSelectRecord import * 
 from .PartlyVisible import * 
 from .StudentCourlas import * 
 from .User import * 
