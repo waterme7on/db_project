@@ -4,7 +4,7 @@ from qqa.models import Courlas
 
 class TeacherCourlas(models.Model):
     teacher_no = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-    courlas_no = models.ManyToManyField(Courlas)
+    courlas_no = models.ForeignKey(Courlas, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.teacher_no) + " teach " + str(self.courlas_no)
@@ -12,4 +12,4 @@ class TeacherCourlas(models.Model):
     class Meta:
         app_label = 'qqa'
         db_table = 'TeacherCourlas'
-        # unique_together = ['student_no', 'courlas_no', 'semester']
+        unique_together = ['teacher_no', 'courlas_no']
