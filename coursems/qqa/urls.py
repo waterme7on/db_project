@@ -21,7 +21,7 @@ urlpatterns = [
         
     ])),
     path('admin/',include([
-        path('courseChoose', admin.CourseChoose.index),
+        path('courseChoose', admin.CourseChoose.index, name="courseChoose"),
         path('courseDetail/<str:course_no>', admin.CourseChoose.courlasChoose, name='courseDetail'),
         path('courlasDetail/<str:courlas_no>', admin.CourseChoose.courlasDetail, name='courlasDetail'),
         path('courseModify/<str:course_no>', admin.CourseChoose.courseModify, name='courseModify'),

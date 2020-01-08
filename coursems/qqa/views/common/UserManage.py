@@ -36,7 +36,7 @@ def index(request):
                 #返回登录成功, 重定向到相应角色的首页
                 if user.character == 'student':
                     request.session['name'] = Student.objects.get(pk=user.x_no).student_name
-                    return redirect('.')
+                    return redirect('/qqa/student/courseSelect')
                 elif user.character == 'teacher':
                     request.session['name'] = Teacher.objects.get(pk=user.x_no).teacher_name
                     return redirect('/qqa/teacher/index')

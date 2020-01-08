@@ -1,15 +1,15 @@
-{% extends "../../base.html" %}
+{% extends "../../student_base.html" %}
 {% load static %}
 {% block included_css %}
-<link rel="stylesheet" href="{% static 'bootstrap-4.4.0-dist/css/bootstrap.min.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'bootstrap-4.4.0-dist/css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'fontawesome-free-5.11.2-web/css/all.css' %}">
-<link rel="stylesheet" href="{% static 'bootstrap-table-1.15.5/dist/bootstrap-table.min.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap-table-1.15.5/dist/bootstrap-table.min.css' %}"> -->
 {% endblock %}
 
 {% block included_js %}
-<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+<!-- <script src="{% static 'jquery/dist/jquery.min.js' %}"></script> -->
 <script src="{% static 'popper.js/dist/umd/popper.min.js' %}"></script>
-<script src="{% static 'bootstrap-4.4.0-dist/js/bootstrap.min.js' %}"></script>
+<!-- <script src="{% static 'bootstrap-4.4.0-dist/js/bootstrap.min.js' %}"></script> -->
 <script src="{% static 'bootstrap-table-1.15.5/dist/bootstrap-table.min.js' %}"></script>
 <script src="{% static 'bootstrap-table-1.15.5/dist/extensions/filter-control/bootstrap-table-filter-control.min.js' %}"></script>
 {% endblock %}
@@ -20,29 +20,29 @@
 
 {% block content %}
 
-<table
-data-toggle="table"
-data-search="true"
-data-filter-control="true"
-data-show-columns="true">
-<thead>
-  <tr>
-    <th>课程编号</th>
-    <th>课程名</th>
-    <th data-filter-control="select">学期</th>
-    <th>学分</th>
-  </tr>
-</thead>
-<tbody>
-  {% for sc in SC %}
-  <tr id="tr-id-"+{{forloop.counter}} class="tr-class-"+{{forloop.counter}} data-object='{"key": "value"}'>
-    <td>{{sc.courlas_no}}</td>
-    <td>{{sc.courlas_no.course_no.course_name}}</td>
-    <td>{{sc.term}}</td>
-    <td>{{sc.courlas_no.course_no.credit}}</td>
-  </tr>
-  {% endfor %}
-</tbody>
-</table>
+  <table
+  data-toggle="table"
+  data-search="true"
+  data-filter-control="true"
+  data-show-columns="true">
+  <thead>
+    <tr>
+      <th>课程编号</th>
+      <th>课程名</th>
+      <!-- <th data-filter-control="select">学期</th> -->
+      <th>学分</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for sc in SC %}
+    <tr id="tr-id-"+{{forloop.counter}} class="tr-class-"+{{forloop.counter}} data-object='{"key": "value"}'>
+      <td>{{sc.courlas_no}}</td>
+      <td>{{sc.courlas_no.course_no.course_name}}</td>
+      <!-- <td>{{sc.term}}</td> -->
+      <td>{{sc.courlas_no.course_no.credit}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>
 
 {% endblock %}

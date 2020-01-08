@@ -1,15 +1,15 @@
-{% extends "../../base.html" %}
+{% extends "../../student_base.html" %}
 {% load static %}
 {% block included_css %}
-<link rel="stylesheet" href="{% static 'bootstrap-4.4.0-dist/css/bootstrap.min.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'bootstrap-4.4.0-dist/css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'fontawesome-free-5.11.2-web/css/all.css' %}">
-<link rel="stylesheet" href="{% static 'bootstrap-table-1.15.5/dist/bootstrap-table.min.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap-table-1.15.5/dist/bootstrap-table.min.css' %}"> -->
 {% endblock %}
 
 {% block included_js %}
-<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+<!-- <script src="{% static 'jquery/dist/jquery.min.js' %}"></script> -->
 <script src="{% static 'popper.js/dist/umd/popper.min.js' %}"></script>
-<script src="{% static 'bootstrap-4.4.0-dist/js/bootstrap.min.js' %}"></script>
+<!-- <script src="{% static 'bootstrap-4.4.0-dist/js/bootstrap.min.js' %}"></script> -->
 <script src="{% static 'bootstrap-table-1.15.5/dist/bootstrap-table.min.js' %}"></script>
 <script
     src="{% static 'bootstrap-table-1.15.5/dist/extensions/filter-control/bootstrap-table-filter-control.min.js' %}"></script>
@@ -17,6 +17,13 @@
 
 {% block title %}
 课程历史信息
+{% endblock %}
+
+{% block name1 %}
+{{name}}
+{% endblock %}
+{% block name2 %}
+{{name}}
 {% endblock %}
 
 {% block content %}
